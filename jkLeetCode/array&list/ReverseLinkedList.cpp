@@ -19,7 +19,7 @@ int main() {
     cout << "NULL:" << NULL << endl;
 //    cout << "nullptr:" << nullptr << endl;
     int n;
-    ListNode *tempH = nullptr, *tempP = nullptr , *temp = nullptr;
+    ListNode *tempH = nullptr, *tempP = nullptr, *temp = nullptr;
     cout << "请输入需要反转的链表个数：";
     cin >> n;
     cout << "输入 " << n << " 数字" << endl;
@@ -43,13 +43,25 @@ int main() {
         cout << "node value:" << nodePrint->val << endl;
         nodePrint = nodePrint->next;
     }
-
-
+    cout << "*** reverseList ***" << endl;
+    ListNode *reN = reverseList(tempH);
+    while (reN) {
+        cout << "node value:" << reN->val << endl;
+        reN = reN->next;
+    }
 
     return 0;
 }
 
 
 ListNode *reverseList(ListNode *head) {
-
+    ListNode *tempN = nullptr;
+    ListNode *PreN = nullptr;
+    while (head) {
+        tempN = head->next;
+        head->next = PreN;
+        PreN = head;
+        head = tempN;
+    }
+    return PreN;
 }
