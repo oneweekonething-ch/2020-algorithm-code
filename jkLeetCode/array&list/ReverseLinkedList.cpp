@@ -13,6 +13,7 @@ using namespace std;
 
 
 ListNode *reverseList(ListNode *head);
+ListNode *reverseList_recursively(ListNode *head);
 
 int main() {
 
@@ -43,8 +44,10 @@ int main() {
         cout << "node value:" << nodePrint->val << endl;
         nodePrint = nodePrint->next;
     }
+
     cout << "*** reverseList ***" << endl;
-    ListNode *reN = reverseList(tempH);
+
+    ListNode *reN = reverseList_recursively(tempH);
     while (reN) {
         cout << "node value:" << reN->val << endl;
         reN = reN->next;
@@ -64,4 +67,14 @@ ListNode *reverseList(ListNode *head) {
         head = tempN;
     }
     return PreN;
+}
+
+
+ListNode* reverseList_recursively(ListNode* head) {
+    if (head==NULL || head->next==NULL) return head;
+    ListNode *h = reverseList_recursively(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return h;
+
 }
