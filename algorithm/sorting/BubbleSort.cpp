@@ -6,6 +6,8 @@
 
 using namespace std;
 
+void printProcessSort(int index,vector<int>& sortProcess);
+
 int main() {
 
     int n;
@@ -30,6 +32,7 @@ int main() {
                 swap_check = 1;
                 swap(numbers[j], numbers[j + 1]);
             }
+            printProcessSort(i,numbers);
         }
     }
 
@@ -44,4 +47,11 @@ int main() {
     }
 
     return 0;
+}
+
+void printProcessSort(int index, vector<int> &sortProcess) {
+    cout << "\n" << "-----" << index << "----" << "\n";
+    for (int i = 0; i < sortProcess.size(); i++) {
+        cout << sortProcess[i] << ",";
+    }
 }
